@@ -17,7 +17,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+   
+    // imageview içinde 1 tane resim göstermek için
+    /*
+    _imageView.image=[UIImage imageNamed:@"image1.png"];
+     */
+    
+    
+    // imageview içerisinde bir kaç tane resmi animasyon halinde göstermek için
+    NSArray *imageNames = @[@"image1.png", @"image2.png", @"image3.png"];
+    
+    NSMutableArray *images = [[NSMutableArray alloc] init];
+   
+    for (int i = 0; i < imageNames.count; i++) {
+        [images addObject:[UIImage imageNamed:[imageNames objectAtIndex:i]]];
+    }
+    
+    _imageView.animationImages=images;
+    _imageView.animationDuration = 0.5;
+    // ağır çekimde göstermek için 0.5 i artırabilirsiniz.
+    
+    [_imageView startAnimating];
+    
 }
 
 - (void)didReceiveMemoryWarning
